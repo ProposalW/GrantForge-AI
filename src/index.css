@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* GrantForge Color System */
+    --gf-teal: 175 75% 18%;
+    --gf-gold: 43 65% 53%;
+    --gf-off-white: 40 23% 95%;
+    --gf-teal-rgb: 11, 77, 74;
+    --gf-gold-rgb: 212, 160, 58;
+    --gf-off-white-rgb: 246, 244, 239;
+    
+    /* shadcn overrides */
+    --background: 175 75% 18%;
+    --foreground: 40 23% 95%;
+    --card: 40 23% 95%;
+    --card-foreground: 175 75% 18%;
+    --popover: 40 23% 95%;
+    --popover-foreground: 175 75% 18%;
+    --primary: 43 65% 53%;
+    --primary-foreground: 175 75% 18%;
+    --secondary: 40 23% 95%;
+    --secondary-foreground: 175 75% 18%;
+    --muted: 175 50% 25%;
+    --muted-foreground: 40 23% 85%;
+    --accent: 43 65% 53%;
+    --accent-foreground: 175 75% 18%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 175 40% 30%;
+    --input: 175 40% 25%;
+    --ring: 43 65% 53%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0B4D4A;
+    color: #F6F4EF;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .gf-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  
+  .gf-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.2s ease;
+  }
+  
+  .gf-btn:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  .gf-card {
+    background-color: #F6F4EF;
+    border: 1px solid rgba(11, 77, 74, 0.15);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  
+  .gf-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 160, 58, 0.45);
+  }
+  
+  .gf-input {
+    background-color: rgba(246, 244, 239, 0.08);
+    border: 1px solid rgba(246, 244, 239, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #F6F4EF;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+  
+  .gf-input:focus {
+    outline: none;
+    border-color: #D4A03A;
+    background-color: rgba(246, 244, 239, 0.12);
+  }
+  
+  .gf-input::placeholder {
+    color: rgba(246, 244, 239, 0.5);
+  }
+  
+  .gf-hairline {
+    height: 1px;
+    background-color: rgba(246, 244, 239, 0.2);
+  }
+  
+  .gf-hairline-dark {
+    height: 1px;
+    background-color: rgba(11, 77, 74, 0.15);
+  }
+  
+  .gf-grain {
+    position: relative;
+  }
+  
+  .gf-grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+  
+  .gf-section-teal {
+    background-color: #0B4D4A;
+    color: #F6F4EF;
+  }
+  
+  .gf-section-light {
+    background-color: #F6F4EF;
+    color: #0B4D4A;
+  }
+  
+  .gf-accent-gold {
+    color: #D4A03A;
+  }
+  
+  .gf-bg-gold {
+    background-color: #D4A03A;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animation-paused {
+    animation-play-state: paused;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B4D4A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 160, 58, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 160, 58, 0.7);
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(212, 160, 58, 0.3);
+  color: #F6F4EF;
+}
