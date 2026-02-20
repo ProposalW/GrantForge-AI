@@ -30,12 +30,15 @@ import WorkPlanGenerator from './sections/WorkPlanGenerator';
 import MEPlanGenerator from './sections/MEPlanGenerator';
 import BudgetGenerator from './sections/BudgetGenerator';
 import ReportGenerator from './sections/ReportGenerator';
+import PaymentModal from './sections/PaymentModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [paymentOpen, setPaymentOpen] = useState(false);
+  const [paymentPlan, setPaymentPlan] = useState<'monthly' | 'yearly'>('monthly');
   const [activeGenerator, setActiveGenerator] = useState<string>('Grant Proposal');
   const heroRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
@@ -209,6 +212,11 @@ function App() {
     setActiveGenerator(type);
     setDialogOpen(true);
     toast.info(`${type} generator opened! Fill in the template to generate your document.`);
+  };
+
+  const openPayment = (plan: 'monthly' | 'yearly') => {
+    setPaymentPlan(plan);
+    setPaymentOpen(true);
   };
 
   const capabilities = [
@@ -903,7 +911,10 @@ function App() {
                 Recommended
               </div>
               <h3 className="text-2xl text-[#0B4D4A] mb-2" style={{ fontFamily: 'Cormorant Garamond, serif' }}>Pro</h3>
-              <p className="text-4xl font-bold text-[#0B4D4A] mb-6">$29<span className="text-lg font-normal text-[#0B4D4A]/60">/mo</span></p>
+              <div className="mb-6">
+                <p className="text-4xl font-bold text-[#0B4D4A]">$29<span className="text-lg font-normal text-[#0B4D4A]/60">/mo</span></p>
+                <p className="text-sm text-[#0B4D4A]/60 mt-1">or $290/year (Save $58)</p>
+              </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-3 text-[#0B4D4A]/70">
                   <CheckCircle className="w-5 h-5 text-[#D4A03A]" />
@@ -926,16 +937,28 @@ function App() {
                   Custom branding
                 </li>
               </ul>
-              <Button 
-                onClick={() => toast.success('Pro plan coming soon!')}
-                className="w-full gf-btn bg-[#D4A03A] text-[#0B4D4A] hover:bg-[#D4A03A]/90"
-              >
-                Upgrade to Pro
-              </Button>
+              <div className="space-y-3">
+                <Button 
+                  onClick={() => openPayment('monthly')}
+                  className="w-full gf-btn bg-[#D4A03A] text-[#0B4D4A] hover:bg-[#D4A03A]/90"
+                >
+                  Monthly - $29/mo
+                </Button>
+                <Button 
+                  onClick={() => openPayment('yearly')}
+                  variant="outline"
+                  className="w-full gf-btn border-2 border-[#0B4D4A] text-[#0B4D4A] hover:bg-[#0B4D4A] hover:text-[#F6F4EF]"
+                >
+                  Yearly - $290/yr (Save $58)
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Payment Modal */}
+      <PaymentModal open={paymentOpen} onOpenChange={setPaymentOpen} plan={paymentPlan} />
 
       {/* Section 12: FAQ */}
       <section id="faq" className="py-24 px-6 lg:px-8">
