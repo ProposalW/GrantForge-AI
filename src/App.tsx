@@ -217,6 +217,7 @@ function App() {
   const openPayment = (plan: 'monthly' | 'yearly') => {
     setPaymentPlan(plan);
     setPaymentOpen(true);
+    console.log('Opening payment modal for plan:', plan);
   };
 
   const capabilities = [
