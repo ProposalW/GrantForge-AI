@@ -912,8 +912,8 @@ function App() {
               </div>
               <h3 className="text-2xl text-[#0B4D4A] mb-2" style={{ fontFamily: 'Cormorant Garamond, serif' }}>Pro</h3>
               <div className="mb-6">
-                <p className="text-4xl font-bold text-[#0B4D4A]">$29<span className="text-lg font-normal text-[#0B4D4A]/60">/mo</span></p>
-                <p className="text-sm text-[#0B4D4A]/60 mt-1">or $290/year (Save $58)</p>
+                <p className="text-4xl font-bold text-[#0B4D4A]">£22<span className="text-lg font-normal text-[#0B4D4A]/60">/mo</span></p>
+                <p className="text-sm text-[#0B4D4A]/60 mt-1">or £220/year (Save £44)</p>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-3 text-[#0B4D4A]/70">
@@ -942,14 +942,14 @@ function App() {
                   onClick={() => openPayment('monthly')}
                   className="w-full gf-btn bg-[#D4A03A] text-[#0B4D4A] hover:bg-[#D4A03A]/90"
                 >
-                  Monthly - $29/mo
+                  Monthly - £22/mo
                 </Button>
                 <Button 
                   onClick={() => openPayment('yearly')}
                   variant="outline"
                   className="w-full gf-btn border-2 border-[#0B4D4A] text-[#0B4D4A] hover:bg-[#0B4D4A] hover:text-[#F6F4EF]"
                 >
-                  Yearly - $290/yr (Save $58)
+                  Yearly - £220/yr (Save £44)
                 </Button>
               </div>
             </div>
